@@ -25,7 +25,6 @@ Feature: Recruitment HRM
 
             Scenario: Admin success add recruitment
               When Admin enter firstname
-              And Enter middle name
               And Admin enter lastname
               And Admin enter email
               And Admin enter no telp

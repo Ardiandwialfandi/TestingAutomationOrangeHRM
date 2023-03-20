@@ -67,19 +67,20 @@ public class TestRecruitment {
     @And("Admin enter email")
     public void admin_enter_email(){
         extentTest.log(LogStatus.PASS, "Admin enter email");
+        pageRecruitment.email.sendKeys(Keys.CONTROL + "a");
         pageRecruitment.email.sendKeys(Keys.DELETE);
         pageRecruitment.email.sendKeys("Juara@gmail.com");
     }
     @And("Admin enter no telp")
     public void admin_enter_no_telp(){
         extentTest.log(LogStatus.PASS, "Admin enter no telp");
+        pageRecruitment.noTelp.sendKeys(Keys.CONTROL + "a");
         pageRecruitment.noTelp.sendKeys(Keys.DELETE);
         pageRecruitment.noTelp.sendKeys("08927819912");
     }
     @And("Admin enter file")
     public void admin_enter_file(){
         extentTest.log(LogStatus.PASS, "Admin enter file");
-        pageRecruitment.doc.sendKeys(Keys.DELETE);
         pageRecruitment.doc.sendKeys("F:\\Berkas Lamar kerja\\CV Ardian Dwi Alfandi.docx");
     }
     @And("Admin enter keywords")
@@ -111,7 +112,7 @@ public class TestRecruitment {
     @And("Select vacancy")
     public void select_vacancy(){
         extentTest.log(LogStatus.PASS,"select vacancy");
-        pageRecruitment.selectJob.sendKeys(LibraryTest.selectJob(3), Keys.ENTER);
+        pageRecruitment.selectJob.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ENTER);
         RegularPage.delayDuration(1);
         RegularPage.scrollPage("0","200");
         RegularPage.delayDuration(1);
@@ -140,6 +141,7 @@ public class TestRecruitment {
     public void Admin_get_message_expect_format(){
         extentTest.log(LogStatus.PASS,"Admin get message expect format");
         Assert.assertTrue(pageRecruitment.expEmail.getText().contains("Expected"));
+
     }
     @Then("Admin get message allows number")
     public void admin_get_message_allows_number(){

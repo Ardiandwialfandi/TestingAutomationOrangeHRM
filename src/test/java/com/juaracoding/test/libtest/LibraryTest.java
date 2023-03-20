@@ -24,21 +24,23 @@ public class LibraryTest {
     public static void setUp() {
         DriverSingleton.getInstance(Regular.CHROME);
         driver = DriverSingleton.getDriver();
-        TestScenarios[] test= TestScenarios.values();
+        TestScenarios[] test = TestScenarios.values();
         extentTest = reports.startTest(test[Utils.testCount].getTestCaseName());
         Utils.testCount++;
     }
+
     @After
-    public void endTestCase(){
+    public void endTestCase() {
         reports.endTest(extentTest);
         reports.flush();
     }
+
     @AfterStep
     public void getResultStatus(Scenario scenario) throws IOException {
-        if(scenario.isFailed()){
-            String screenshotPath = Utils.getScreenshot(driver, scenario.getName().replace(" ","_"));
-            extentTest.log(LogStatus.FAIL, scenario.getName()+"\n"
-                    +extentTest.addScreenCapture(screenshotPath));
+        if (scenario.isFailed()) {
+            String screenshotPath = Utils.getScreenshot(driver, scenario.getName().replace(" ", "_"));
+            extentTest.log(LogStatus.FAIL, scenario.getName() + "\n"
+                    + extentTest.addScreenCapture(screenshotPath));
         }
     }
 
@@ -56,11 +58,4 @@ public class LibraryTest {
         DriverSingleton.closeObjectInstance();
     }
 
-    public static String selectJob(int ulang){
-        String a = null;
-        for(int i = 0 ; i<ulang;i++){
-           a = "Keys.ARROW_DOWN";
-        }
-        return a;
-    }
 }
